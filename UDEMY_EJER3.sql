@@ -51,3 +51,18 @@ select min(length) as menor_duracion from film;
 -- 25) muestra la suma de pagos despues del 2006
 select sum(payment.amount) as 'total de pagos despues del 2006' from payment 
 where payment_date >= '2006-01-01';
+
+-- INNER JOIN selecciona registros que tienen valores coincidentes en ambas tablas
+
+-- ejercicios: muestra el nombbre de los clientes que han rentado alguna vez
+select R.RENTAL_ID , C.FIRST_NAME from RENTAL R 
+inner join CUSTOMER C on R.CUSTOMER_ID = C.CUSTOMER_ID;
+
+-- LEFT JOIN devuelve todos los registros de la tabla de la izquierda y los 
+-- resgistros coincidentes de la tabla de la derecha.
+
+-- el resultado es 0 registros del lado derecho, si no hay ninguna coincidencia
+
+-- muestra si existen peliculas con idioma italiano
+select * from language l left join film f on l.language_id = f.language_id 
+where l.language_id= 2
